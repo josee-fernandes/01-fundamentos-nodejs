@@ -17,14 +17,29 @@ import http from 'node:http'
 // PATCH => Atualizar uma informação específica de um recurso no back-end 
 // DELETE => Deletar um recurso do back-end
 
+// Stateful => Guarda os dados de forma local na memória
+// Stateless => Guarda dados em um banco de dados, arquivos etc
+
+// Cabeçalhos (Requisição/resposta) => Metadados
+
+const users = []
+
 const server = http.createServer((request, response) => {
   const { method, url } = request
 
   if (method === 'GET' && url === '/users') {
-    return response.end('Listagem de usuários')
+    return response
+      .setHeader('Content-Type', 'application/json')
+      .end(JSON.stringify(users))
   }
 
   if (method === 'POST' && url === '/users') {
+    users.push({
+      id: 1,
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+    })
+
     return response.end('Criação de usuário')
   }
 
