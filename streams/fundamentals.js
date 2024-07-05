@@ -4,7 +4,7 @@
 // 1gb - 1.000.000 linhas
 // POST /upload import.csv
 
-// 10mb/s - 100s
+// 10mb/s - 820s
 
 // 100s -> Inserções no banco de dados
 
